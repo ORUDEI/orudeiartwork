@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    'Dibujo y obras realizadas mediante stippling con tiralíneas en Santiago, Chile.',
+    'DGalería de OrudeiArtwork',
 
   applicationName: 'OrudeiArtwork',
 
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     siteName: 'OrudeiArtwork',
     title: 'OrudeiArtwork',
     description:
-      'Dibujo y obras realizadas mediante stippling con tiralíneas.',
+      'Galería de OrudeiArtwork.',
     images: [
       {
         url: '/brand/opengraph-image.png',
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'OrudeiArtwork',
     description:
-      'Dibujo y obras realizadas mediante stippling con tiralíneas.',
+      'Galería de OrudeiArtwork',
     images: ['/brand/opengraph-image.png'],
   },
 
