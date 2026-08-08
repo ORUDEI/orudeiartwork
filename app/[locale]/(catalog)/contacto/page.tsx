@@ -65,9 +65,9 @@ export default async function ContactPage({
         </h1>
       </header>
 
-      <div className='flex flex-1 items-center py-16 sm:py-24'>
+      <div className='flex flex-1 items-center py-20 sm:py-28 lg:py-32'>
         <div className='w-full'>
-          <p className='max-w-4xl text-3xl leading-[1.35] tracking-[-0.025em] text-white/90 sm:text-5xl lg:text-6xl lg:leading-[1.2]'>
+          <p className='font-editorial max-w-4xl text-[2rem] font-normal leading-[1.25] tracking-[-0.01em] text-white/90 sm:text-5xl lg:text-[3.5rem] lg:leading-[1.22]'>
             {t('statement')}
           </p>
 
@@ -76,7 +76,9 @@ export default async function ContactPage({
               <a
                 key={item.number}
                 href={item.href}
-                target={item.href.startsWith('http') ? '_blank' : undefined}
+                target={
+                  item.href.startsWith('http') ? '_blank' : undefined
+                }
                 rel={
                   item.href.startsWith('http')
                     ? 'noreferrer'

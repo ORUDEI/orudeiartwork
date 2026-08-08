@@ -16,9 +16,9 @@
     "title": "Gallery"
   },
   "Originals": {
-    "eyebrow": "Original works",
+    "eyebrow": "Selected works",
     "title": "Originals",
-    "empty": "There are no works in this category."
+    "empty": "No works are available in this category."
   },
   "ArtworkFilters": {
     "ariaLabel": "Filter artworks",
@@ -31,7 +31,7 @@
     "dimensions": "Dimensions",
     "instagramInquiry": "Inquire on Instagram",
     "techniques": {
-      "technicalPenOnPaper": "Stippling on paper"
+      "stipplingOnPaper": "Stippling on paper"
     },
     "status": {
       "available": "Available",
@@ -56,7 +56,7 @@
       "description": "Deliveries within Santiago are arranged directly with the buyer."
     },
     "regions": {
-      "title": "Other regions",
+      "title": "Regions",
       "description": "Shipping is available throughout Chile using a delivery service agreed upon in advance."
     },
     "cost": {
@@ -66,7 +66,7 @@
     "footer": "The final delivery method and cost are confirmed before any payment is made."
   },
   "Contact": {
-    "eyebrow": "Conversation",
+    "eyebrow": "Inquiries",
     "title": "Contact",
     "statement": "For inquiries about available works, commissions, or collaborations.",
     "email": "Email"

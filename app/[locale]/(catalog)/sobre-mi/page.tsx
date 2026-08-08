@@ -49,7 +49,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
       </header>
 
       <div className='flex flex-1 items-center py-20 sm:py-28 lg:py-32'>
-        <p className='font-editorial max-w-[980px] text-3xl font-normal leading-[1.32] tracking-[-0.01em] text-white/85 sm:text-5xl lg:text-[3.5rem] lg:leading-[1.22]'>
+        <p className='font-editorial max-w-[980px] text-[2rem] font-normal leading-[1.28] tracking-[-0.01em] text-white/85 sm:text-5xl sm:leading-[1.32] lg:text-[3.5rem] lg:leading-[1.22]'>
           {t('statement')}
         </p>
       </div>

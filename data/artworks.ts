@@ -6,7 +6,7 @@ export const artworks: Artwork[] = [
     title: 'Sostén',
     year: 2026,
     image: '/artworks/sosten.jpg',
-    technique: 'technicalPenOnPaper',
+    technique: 'stipplingOnPaper',
     dimensions: '14,8 × 21 cm',
     price: 45000,
     status: 'sold',

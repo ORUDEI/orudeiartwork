@@ -16,9 +16,9 @@
     "title": "Galería"
   },
   "Originals": {
-    "eyebrow": "Obras únicas",
+    "eyebrow": "Obras originales",
     "title": "Originales",
-    "empty": "No hay obras en esta categoría."
+    "empty": "No hay obras disponibles en esta categoría."
   },
   "ArtworkFilters": {
     "ariaLabel": "Filtrar obras",
@@ -57,18 +57,18 @@
     },
     "regions": {
       "title": "Regiones",
-      "description": "Realizo envíos a todo Chile mediante una empresa de transporte acordada previamente."
+      "description": "Realizo envíos a todo Chile mediante un servicio de transporte acordado previamente."
     },
     "cost": {
       "title": "Costo",
-      "description": "El valor del envío no está incluido en el precio de la obra y se calcula según destino y modalidad de entrega."
+      "description": "El valor del envío no está incluido en el precio de la obra y se calcula según el destino y la modalidad de entrega."
     },
     "footer": "La modalidad y el costo final se confirman antes de realizar cualquier pago."
   },
   "Contact": {
-    "eyebrow": "Conversación",
+    "eyebrow": "Consultas",
     "title": "Contacto",
-    "statement": "Para consultas sobre obras disponibles, colaboraciones o encargos.",
+    "statement": "Para consultas sobre obras disponibles, encargos o colaboraciones.",
     "email": "Correo"
   },
   "NotFound": {

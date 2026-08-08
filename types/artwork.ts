@@ -4,7 +4,7 @@ export type ArtworkStatus =
   | 'sold'
   | 'not-for-sale';
 
-export type ArtworkTechnique = 'technicalPenOnPaper';
+export type ArtworkTechnique = 'stipplingOnPaper';
 
 export interface Artwork {
   slug: string;

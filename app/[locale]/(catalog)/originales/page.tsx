@@ -78,18 +78,20 @@ export default async function OriginalsPage({
 
   return (
     <section>
-      <header className='mb-16 flex items-end justify-between gap-8 sm:mb-20'>
-        <div>
-          <p className='mb-3 text-[10px] uppercase tracking-[0.2em] text-white/40'>
-            {t('eyebrow')}
-          </p>
+      <header className='mb-16 sm:mb-20'>
+        <div className='flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between'>
+          <div>
+            <p className='mb-3 text-[10px] uppercase tracking-[0.2em] text-white/40'>
+              {t('eyebrow')}
+            </p>
 
-          <h1 className='text-3xl font-medium uppercase tracking-[0.08em] sm:text-4xl'>
-            {t('title')}
-          </h1>
+            <h1 className='text-3xl font-medium uppercase tracking-[0.08em] sm:text-4xl'>
+              {t('title')}
+            </h1>
+          </div>
+
+          <ArtworkFilters activeFilter={activeFilter} />
         </div>
-
-        <ArtworkFilters activeFilter={activeFilter} />
       </header>
 
       {originals.length > 0 ? (
