@@ -1,0 +1,18 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 240 560"
+  role="img"
+  aria-labelledby="title"
+>
+  <title id="title">OrudeiArtwork</title>
+
+  <!-- Laterales -->
+  <rect x="18" y="4" width="22" height="548" rx="11" fill="#FFFFFF" />
+  <rect x="200" y="4" width="22" height="548" rx="11" fill="#FFFFFF" />
+
+  <!-- Trazo central -->
+  <rect x="109" y="60" width="22" height="480" rx="11" fill="#FFFFFF" />
+
+  <!-- Base central -->
+  <rect x="78" y="518" width="84" height="22" rx="11" fill="#FFFFFF" />
+</svg>
