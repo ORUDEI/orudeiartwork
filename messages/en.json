@@ -1,0 +1,80 @@
+{
+  "Navigation": {
+    "gallery": "Gallery",
+    "originals": "Originals",
+    "about": "About",
+    "shipping": "Shipping",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
+    "mainNavigation": "Main navigation"
+  },
+  "Gallery": {
+    "eyebrow": "Archive",
+    "title": "Gallery"
+  },
+  "Originals": {
+    "eyebrow": "Original works",
+    "title": "Originals",
+    "empty": "There are no works in this category."
+  },
+  "ArtworkFilters": {
+    "ariaLabel": "Filter artworks",
+    "all": "All",
+    "available": "Available",
+    "sold": "Sold"
+  },
+  "Artwork": {
+    "technique": "Technique",
+    "dimensions": "Dimensions",
+    "instagramInquiry": "Inquire on Instagram",
+    "techniques": {
+      "technicalPenOnPaper": "Stippling on paper"
+    },
+    "status": {
+      "available": "Available",
+      "reserved": "Reserved",
+      "sold": "Sold",
+      "not-for-sale": "Not for sale"
+    }
+  },
+  "About": {
+    "title": "About",
+    "statement": "My work explores fragility, permanence, and inner states, using drawing as a way to make visible what usually remains hidden.",
+    "disciplineLabel": "Discipline",
+    "disciplineValue": "Drawing",
+    "techniqueLabel": "Technique",
+    "techniqueValue": "Stippling"
+  },
+  "Shipping": {
+    "eyebrow": "Delivery",
+    "title": "Shipping",
+    "santiago": {
+      "title": "Santiago",
+      "description": "Deliveries within Santiago are arranged directly with the buyer."
+    },
+    "regions": {
+      "title": "Other regions",
+      "description": "Shipping is available throughout Chile using a delivery service agreed upon in advance."
+    },
+    "cost": {
+      "title": "Cost",
+      "description": "Shipping is not included in the price of the artwork and is calculated based on the destination and delivery method."
+    },
+    "footer": "The final delivery method and cost are confirmed before any payment is made."
+  },
+  "Contact": {
+    "eyebrow": "Conversation",
+    "title": "Contact",
+    "statement": "For inquiries about available works, commissions, or collaborations.",
+    "email": "Email"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "statement": "This page is not part of the archive.",
+    "backToGallery": "Back to gallery",
+    "backHome": "Back to home"
+  }
+}

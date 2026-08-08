@@ -4,12 +4,14 @@ export type ArtworkStatus =
   | 'sold'
   | 'not-for-sale';
 
+export type ArtworkTechnique = 'technicalPenOnPaper';
+
 export interface Artwork {
   slug: string;
   title: string;
   year: number;
   image: string;
-  technique: string;
+  technique: ArtworkTechnique;
   dimensions: string;
   description?: string;
   price?: number;

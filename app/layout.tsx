@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
-import { Geist } from 'next/font/google';
+import { Cormorant_Garamond, Geist } from 'next/font/google';
+import { getLocale } from 'next-intl/server';
 
 import './globals.css';
 
@@ -8,91 +9,106 @@ const geist = Geist({
   variable: '--font-geist',
 });
 
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  variable: '--font-cormorant',
+  weight: ['400', '500'],
+});
+
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const isEnglish = locale === 'en';
 
-  title: {
-    default: 'OrudeiArtwork',
-    template: '%s — OrudeiArtwork',
-  },
+  const description = isEnglish
+    ? 'OrudeiArtwork gallery.'
+    : 'Galería de OrudeiArtwork.';
 
-  description:
-    'DGalería de OrudeiArtwork',
+  return {
+    metadataBase: new URL(siteUrl),
 
-  applicationName: 'OrudeiArtwork',
-
-  keywords: [
-    'OrudeiArtwork',
-    'arte chileno',
-    'dibujo',
-    'stippling',
-    'puntillismo',
-    'tiralíneas',
-    'obras originales',
-    'artista en Santiago',
-  ],
-
-  authors: [
-    {
-      name: 'OrudeiArtwork',
+    title: {
+      default: 'OrudeiArtwork',
+      template: '%s — OrudeiArtwork',
     },
-  ],
 
-  creator: 'OrudeiArtwork',
-  publisher: 'OrudeiArtwork',
+    description,
 
-  icons: {
-    icon: [
+    applicationName: 'OrudeiArtwork',
+
+    keywords: [
+      'OrudeiArtwork',
+      'arte chileno',
+      'Chilean art',
+      'dibujo',
+      'drawing',
+      'stippling',
+      'puntillismo',
+      'tiralíneas',
+      'obras originales',
+      'original artwork',
+      'artista en Santiago',
+    ],
+
+    authors: [
       {
-        url: '/brand/icon.svg',
-        type: 'image/svg+xml',
+        name: 'OrudeiArtwork',
       },
     ],
-    shortcut: '/brand/icon.svg',
-  },
 
-  openGraph: {
-    type: 'website',
-    locale: 'es_CL',
-    siteName: 'OrudeiArtwork',
-    title: 'OrudeiArtwork',
-    description:
-      'Galería de OrudeiArtwork.',
-    images: [
-      {
-        url: '/brand/opengraph-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'OrudeiArtwork',
-      },
-    ],
-  },
+    creator: 'OrudeiArtwork',
+    publisher: 'OrudeiArtwork',
 
-  twitter: {
-    card: 'summary_large_image',
-    title: 'OrudeiArtwork',
-    description:
-      'Galería de OrudeiArtwork',
-    images: ['/brand/opengraph-image.png'],
-  },
+    icons: {
+      icon: [
+        {
+          url: '/brand/icon.svg',
+          type: 'image/svg+xml',
+        },
+      ],
+      shortcut: '/brand/icon.svg',
+    },
 
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+    openGraph: {
+      type: 'website',
+      locale: isEnglish ? 'en_US' : 'es_CL',
+      siteName: 'OrudeiArtwork',
+      title: 'OrudeiArtwork',
+      description,
+      images: [
+        {
+          url: '/brand/opengraph-image.png',
+          width: 1200,
+          height: 630,
+          alt: 'OrudeiArtwork',
+        },
+      ],
+    },
+
+    twitter: {
+      card: 'summary_large_image',
+      title: 'OrudeiArtwork',
+      description,
+      images: ['/brand/opengraph-image.png'],
+    },
+
+    robots: {
       index: true,
       follow: true,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-      'max-video-preview': -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+        'max-video-preview': -1,
+      },
     },
-  },
 
-  category: 'art',
-};
+    category: 'art',
+  };
+}
 
 export const viewport: Viewport = {
   themeColor: '#0d0d0d',
@@ -103,12 +119,16 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<RootLayoutProps>) {
+  const locale = await getLocale();
+
   return (
-    <html lang='es'>
-      <body className={`${geist.variable} antialiased`}>
+    <html lang={locale}>
+      <body
+        className={`${geist.variable} ${cormorant.variable} antialiased`}
+      >
         {children}
       </body>
     </html>

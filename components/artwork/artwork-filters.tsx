@@ -1,5 +1,8 @@
-import Link from 'next/link';
+'use client';
 
+import { useTranslations } from 'next-intl';
+
+import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 
 export type ArtworkFilter = 'all' | 'available' | 'sold';
@@ -9,22 +12,22 @@ interface ArtworkFiltersProps {
 }
 
 const filters: Array<{
-  label: string;
+  key: 'all' | 'available' | 'sold';
   value: ArtworkFilter;
   href: string;
 }> = [
   {
-    label: 'Todas',
+    key: 'all',
     value: 'all',
     href: '/originales',
   },
   {
-    label: 'Disponibles',
+    key: 'available',
     value: 'available',
     href: '/originales?estado=available',
   },
   {
-    label: 'Vendidas',
+    key: 'sold',
     value: 'sold',
     href: '/originales?estado=sold',
   },
@@ -33,10 +36,12 @@ const filters: Array<{
 export function ArtworkFilters({
   activeFilter,
 }: ArtworkFiltersProps) {
+  const t = useTranslations('ArtworkFilters');
+
   return (
     <nav
-      aria-label='Filtrar obras originales'
-      className='flex flex-wrap gap-x-7 gap-y-3'
+      aria-label={t('ariaLabel')}
+      className='flex items-center gap-5'
     >
       {filters.map((filter) => {
         const isActive = activeFilter === filter.value;
@@ -56,7 +61,7 @@ export function ArtworkFilters({
                 : 'text-white/40 after:w-0 hover:text-white hover:after:w-full',
             )}
           >
-            {filter.label}
+            {t(filter.key)}
           </Link>
         );
       })}

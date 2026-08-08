@@ -2,14 +2,14 @@ import type { Artwork } from '../types/artwork';
 
 export const artworks: Artwork[] = [
   {
-    slug: 'soten',
-    title: 'Sotén',
+    slug: 'sosten',
+    title: 'Sostén',
     year: 2026,
     image: '/artworks/sosten.jpg',
-    technique: 'Tiralineas sobre papel',
+    technique: 'technicalPenOnPaper',
     dimensions: '14,8 × 21 cm',
     price: 45000,
-    status: 'available',
+    status: 'sold',
     isOriginal: true,
   },
 ];

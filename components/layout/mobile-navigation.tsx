@@ -1,9 +1,9 @@
 'use client';
 
 import * as React from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
+import { LanguageSwitcher } from '@/components/layout/language-switcher';
 import { Button } from '@/components/ui/button';
 import {
   Sheet,
@@ -13,33 +13,35 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import { Link, usePathname } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 
 const navigation = [
   {
-    label: 'Galería',
+    key: 'gallery',
     href: '/galeria',
   },
   {
-    label: 'Originales',
+    key: 'originals',
     href: '/originales',
   },
   {
-    label: 'Sobre mí',
+    key: 'about',
     href: '/sobre-mi',
   },
   {
-    label: 'Envíos',
+    key: 'shipping',
     href: '/envios',
   },
   {
-    label: 'Contacto',
+    key: 'contact',
     href: '/contacto',
   },
-];
+] as const;
 
 export function MobileNavigation() {
   const pathname = usePathname();
+  const t = useTranslations('Navigation');
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
@@ -58,7 +60,7 @@ export function MobileNavigation() {
               type='button'
               variant='ghost'
               size='sm'
-              aria-label='Abrir menú de navegación'
+              aria-label={t('openMenu')}
               className={cn(
                 'h-auto cursor-pointer touch-manipulation p-0',
                 'border-0 bg-transparent shadow-none',
@@ -70,7 +72,7 @@ export function MobileNavigation() {
             />
           }
         >
-          Menú
+          {t('menu')}
         </SheetTrigger>
 
         <SheetContent
@@ -85,7 +87,10 @@ export function MobileNavigation() {
           <div className='flex min-h-dvh flex-col px-6 py-7'>
             <SheetHeader className='flex-row items-center justify-between gap-6 p-0 text-left'>
               <SheetTitle className='text-sm font-medium uppercase tracking-[0.16em] text-white'>
-                <Link href='/' onClick={() => setIsOpen(false)}>
+                <Link
+                  href='/'
+                  onClick={() => setIsOpen(false)}
+                >
                   OrudeiArtwork
                 </Link>
               </SheetTitle>
@@ -94,7 +99,7 @@ export function MobileNavigation() {
                 render={
                   <button
                     type='button'
-                    aria-label='Cerrar menú de navegación'
+                    aria-label={t('closeMenu')}
                     className={cn(
                       'h-auto cursor-pointer touch-manipulation p-0',
                       'border-0 bg-transparent shadow-none outline-none',
@@ -105,12 +110,12 @@ export function MobileNavigation() {
                   />
                 }
               >
-                Cerrar
+                {t('close')}
               </SheetClose>
             </SheetHeader>
 
             <nav
-              aria-label='Navegación principal'
+              aria-label={t('mainNavigation')}
               className='my-auto flex flex-col items-start gap-7 py-16'
             >
               {navigation.map((item, index) => {
@@ -139,19 +144,23 @@ export function MobileNavigation() {
                         {String(index + 1).padStart(2, '0')}
                       </span>
 
-                      {item.label}
+                      {t(item.key)}
                     </span>
                   </Link>
                 );
               })}
             </nav>
 
-            <div className='flex items-end justify-between gap-6 border-t border-white/10 pt-6'>
-              <p className='text-[9px] uppercase tracking-[0.18em] text-white/30'>
-                Santiago, Chile
-              </p>
+            <div className='border-t border-white/10 pt-6'>
+              <div className='flex items-center justify-between gap-6'>
+                <p className='text-[9px] uppercase tracking-[0.18em] text-white/30'>
+                  Santiago, Chile
+                </p>
 
-              <p className='text-[9px] uppercase tracking-[0.18em] text-white/30'>
+                <LanguageSwitcher />
+              </div>
+
+              <p className='mt-5 text-[9px] uppercase tracking-[0.18em] text-white/30'>
                 © 2026
               </p>
             </div>

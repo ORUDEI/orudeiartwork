@@ -1,46 +1,74 @@
 import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 
-export const metadata: Metadata = {
-  title: 'Contacto',
-  description:
-    'Contacta a OrudeiArtwork para consultar por obras disponibles, encargos o colaboraciones.',
-  alternates: {
-    canonical: '/contacto',
-  },
-};
+interface ContactPageProps {
+  params: Promise<{
+    locale: string;
+  }>;
+}
 
-const contactLinks = [
-  {
-    number: '01',
-    label: 'Instagram',
-    value: '@orudeiartwork',
-    href: 'https://instagram.com/orudeiartwork',
-  },
-  {
-    number: '02',
-    label: 'Correo',
-    value: 'orudeiartwork@gmail.com',
-    href: 'mailto:orudeiartwork@gmail.com',
-  },
-];
+export async function generateMetadata({
+  params,
+}: ContactPageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const isEnglish = locale === 'en';
 
-export default function ContactPage() {
+  return {
+    title: isEnglish ? 'Contact' : 'Contacto',
+    description: isEnglish
+      ? 'Contact OrudeiArtwork about available works, commissions or collaborations.'
+      : 'Contacta a OrudeiArtwork para consultar por obras disponibles, encargos o colaboraciones.',
+    alternates: {
+      canonical: isEnglish ? '/en/contacto' : '/contacto',
+      languages: {
+        es: '/contacto',
+        en: '/en/contacto',
+      },
+    },
+  };
+}
+
+export default async function ContactPage({
+  params,
+}: ContactPageProps) {
+  const { locale } = await params;
+
+  const t = await getTranslations({
+    locale,
+    namespace: 'Contact',
+  });
+
+  const contactLinks = [
+    {
+      number: '01',
+      label: 'Instagram',
+      value: '@orudeiartwork',
+      href: 'https://instagram.com/orudeiartwork',
+    },
+    {
+      number: '02',
+      label: t('email'),
+      value: 'orudeiartwork@gmail.com',
+      href: 'mailto:orudeiartwork@gmail.com',
+    },
+  ];
+
   return (
-    <section className='flex min-h-[calc(100dvh-8rem)] flex-col'>
+    <section className='flex min-h-[calc(100vh-8rem)] flex-col'>
       <header>
-        <p className='mb-3 text-[10px] uppercase tracking-[0.24em] text-white/40'>
-          Conversación
+        <p className='mb-3 text-[10px] uppercase tracking-[0.2em] text-white/40'>
+          {t('eyebrow')}
         </p>
 
         <h1 className='text-3xl font-medium uppercase tracking-[0.08em] sm:text-4xl'>
-          Contacto
+          {t('title')}
         </h1>
       </header>
 
       <div className='flex flex-1 items-center py-16 sm:py-24'>
         <div className='w-full'>
           <p className='max-w-4xl text-3xl leading-[1.35] tracking-[-0.025em] text-white/90 sm:text-5xl lg:text-6xl lg:leading-[1.2]'>
-            Para consultas sobre obras disponibles, colaboraciones o encargos.
+            {t('statement')}
           </p>
 
           <div className='mt-16 border-t border-white/10'>
@@ -49,7 +77,11 @@ export default function ContactPage() {
                 key={item.number}
                 href={item.href}
                 target={item.href.startsWith('http') ? '_blank' : undefined}
-                rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
+                rel={
+                  item.href.startsWith('http')
+                    ? 'noreferrer'
+                    : undefined
+                }
                 className='group grid gap-5 border-b border-white/10 py-7 transition-colors sm:grid-cols-[72px_180px_1fr] sm:items-center'
               >
                 <p className='text-[9px] tracking-[0.2em] text-white/25'>

@@ -37,3 +37,7 @@ a {
   background: var(--foreground);
   color: var(--background);
 }
+
+.font-editorial {
+  font-family: var(--font-cormorant);
+}

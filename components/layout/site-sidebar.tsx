@@ -1,39 +1,41 @@
 'use client';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
+import { LanguageSwitcher } from '@/components/layout/language-switcher';
+import { Link, usePathname } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 
 const navigation = [
   {
-    label: 'Galería',
+    key: 'gallery',
     href: '/galeria',
   },
   {
-    label: 'Originales',
+    key: 'originals',
     href: '/originales',
   },
   {
-    label: 'Sobre mí',
+    key: 'about',
     href: '/sobre-mi',
   },
   {
-    label: 'Envíos',
+    key: 'shipping',
     href: '/envios',
   },
   {
-    label: 'Contacto',
+    key: 'contact',
     href: '/contacto',
   },
-];
+] as const;
 
 export function SiteSidebar() {
   const pathname = usePathname();
+  const t = useTranslations('Navigation');
 
   return (
-    <aside className='fixed inset-y-0 right-0 hidden w-[360px] border-l border-white/10 bg-[#101010] px-12 py-16 lg:block'>
-      <div className='flex h-full min-h-[420px] flex-col'>
+    <aside className='fixed right-0 top-0 hidden h-screen w-[360px] border-l border-white/10 bg-[#101010] px-12 py-16 lg:flex'>
+      <div className='flex w-full flex-col'>
         <Link
           href='/'
           className='w-fit text-base font-medium uppercase tracking-[0.16em]'
@@ -65,15 +67,19 @@ export function SiteSidebar() {
                     : 'text-white/60 after:w-0 hover:text-white hover:after:w-full',
                 )}
               >
-                {item.label}
+                {t(item.key)}
               </Link>
             );
           })}
         </nav>
 
-        <p className='mt-auto pt-20 text-[10px] uppercase tracking-[0.18em] text-white/35'>
-          Santiago, Chile
-        </p>
+        <div className='mt-auto flex w-full items-center justify-between gap-6 pt-20'>
+          <p className='text-[10px] uppercase tracking-[0.18em] text-white/35'>
+            Santiago, Chile
+          </p>
+
+          <LanguageSwitcher />
+        </div>
       </div>
     </aside>
   );

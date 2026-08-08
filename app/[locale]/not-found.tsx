@@ -1,25 +1,29 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
 
-export default function NotFound() {
+import { Link } from '@/i18n/navigation';
+
+export default async function NotFound() {
+  const t = await getTranslations('NotFound');
+
   return (
-    <main className='min-h-dvh bg-[#101010] text-white'>
+    <main className='min-h-dvh bg-[#0d0d0d] text-white'>
       <div className='grid min-h-dvh lg:grid-cols-[minmax(0,1fr)_360px]'>
-        <section className='flex min-h-[75dvh] flex-col justify-between px-6 py-10 sm:px-10 sm:py-14 lg:min-h-dvh lg:px-16 lg:py-16 xl:px-20'>
+        <section className='flex min-h-dvh flex-col px-6 py-10 sm:px-10 sm:py-14 lg:px-14 lg:py-16 xl:px-20'>
           <header>
-            <p className='mb-3 text-[10px] uppercase tracking-[0.24em] text-white/40'>
+            <p className='mb-3 text-[10px] uppercase tracking-[0.2em] text-white/40'>
               Error 404
             </p>
 
             <h1 className='text-3xl font-medium uppercase tracking-[0.08em] sm:text-4xl'>
-              Página no encontrada
+              {t('title')}
             </h1>
           </header>
 
           <div className='flex flex-1 items-center py-16 sm:py-24'>
             <div>
               <p className='max-w-4xl text-3xl leading-[1.35] tracking-[-0.025em] text-white/90 sm:text-5xl lg:text-6xl lg:leading-[1.2]'>
-                Esta página no forma parte del archivo.
+                {t('statement')}
               </p>
 
               <Link
@@ -27,7 +31,7 @@ export default function NotFound() {
                 className='group mt-10 inline-flex w-fit text-[10px] font-medium uppercase tracking-[0.22em] text-white transition-colors hover:text-white/65'
               >
                 <span className='relative pb-2'>
-                  Volver a galería
+                  {t('backToGallery')}
 
                   <span
                     aria-hidden='true'
@@ -44,7 +48,7 @@ export default function NotFound() {
         </section>
 
         <aside className='hidden border-l border-white/10 lg:flex lg:flex-col lg:items-center lg:justify-center'>
-          <Link href='/' aria-label='Volver al inicio'>
+          <Link href='/' aria-label={t('backHome')}>
             <Image
               src='/brand/logo-white.svg'
               alt=''

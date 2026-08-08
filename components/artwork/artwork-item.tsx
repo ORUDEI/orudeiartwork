@@ -1,8 +1,11 @@
-import Image from 'next/image';
+'use client';
 
-import { artworkStatusLabels, formatArtworkPrice } from '@/lib/artwork';
+import Image from 'next/image';
+import { useTranslations } from 'next-intl';
+
+import { formatArtworkPrice } from '@/lib/artwork';
 import { cn } from '@/lib/utils';
-import type { Artwork } from '../../app/types/artwork';
+import type { Artwork } from '../../types/artwork';
 
 interface ArtworkItemProps {
   artwork: Artwork;
@@ -25,6 +28,8 @@ export function ArtworkItem({
   variant = 'gallery',
   priority = false,
 }: ArtworkItemProps) {
+  const t = useTranslations('Artwork');
+
   const isOriginal = variant === 'original';
   const isAvailable = artwork.status === 'available';
   const hasPrice = isAvailable && typeof artwork.price === 'number';
@@ -82,12 +87,12 @@ export function ArtworkItem({
             <div>
               <dl className='space-y-2 text-xs leading-5 text-white/75'>
                 <div>
-                  <dt className='sr-only'>Técnica</dt>
-                  <dd>{artwork.technique}</dd>
+                  <dt className='sr-only'>{t('technique')}</dt>
+                  <dd>{t(`techniques.${artwork.technique}`)}</dd>
                 </div>
 
                 <div>
-                  <dt className='sr-only'>Dimensiones</dt>
+                  <dt className='sr-only'>{t('dimensions')}</dt>
                   <dd>{artwork.dimensions}</dd>
                 </div>
               </dl>
@@ -95,7 +100,7 @@ export function ArtworkItem({
               <div className='mt-6 border-t border-white/20 pt-5'>
                 <div className='flex items-end justify-between gap-5'>
                   <p className='text-[10px] uppercase tracking-[0.18em] text-white/65'>
-                    {artworkStatusLabels[artwork.status]}
+                    {t(`status.${artwork.status}`)}
                   </p>
 
                   {hasPrice && (
@@ -119,7 +124,7 @@ export function ArtworkItem({
                     )}
                   >
                     <span className='relative pb-2'>
-                      Consultar por Instagram
+                      {t('instagramInquiry')}
 
                       <span
                         aria-hidden='true'
@@ -153,7 +158,7 @@ export function ArtworkItem({
           </div>
 
           <p className='mt-2 text-xs leading-5 text-white/45'>
-            {artwork.technique}
+            {t(`techniques.${artwork.technique}`)}
           </p>
 
           <p className='text-xs leading-5 text-white/35'>
@@ -175,7 +180,7 @@ export function ArtworkItem({
           </div>
 
           <p className='mt-2 text-xs leading-5 text-white/50'>
-            {artwork.technique}
+            {t(`techniques.${artwork.technique}`)}
           </p>
 
           <p className='text-xs leading-5 text-white/50'>
@@ -185,7 +190,7 @@ export function ArtworkItem({
           <div className='mt-4 border-t border-white/10 pt-4'>
             <div className='flex items-baseline justify-between gap-5'>
               <p className='text-[10px] uppercase tracking-[0.16em] text-white/45'>
-                {artworkStatusLabels[artwork.status]}
+                {t(`status.${artwork.status}`)}
               </p>
 
               {hasPrice && (
@@ -203,7 +208,7 @@ export function ArtworkItem({
                 className='group/link mt-4 inline-flex w-fit text-[10px] font-medium uppercase tracking-[0.22em]'
               >
                 <span className='relative pb-2'>
-                  Consultar por Instagram
+                  {t('instagramInquiry')}
 
                   <span
                     aria-hidden='true'
