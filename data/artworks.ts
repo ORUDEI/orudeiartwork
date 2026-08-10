@@ -12,4 +12,15 @@ export const artworks: Artwork[] = [
     status: 'sold',
     isOriginal: true,
   },
+    {
+    slug: 'lo_que_permanece',
+    title: 'Lo que permanece',
+    year: 2026,
+    image: '/artworks/lo_que_permanece.png',
+    technique: 'stipplingOnPaper',
+    dimensions: '14,8 × 21 cm',
+    price: 50000,
+    status: 'available',
+    isOriginal: true,
+  },
 ];
