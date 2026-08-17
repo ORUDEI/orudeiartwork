@@ -20,7 +20,7 @@ export const artworks: Artwork[] = [
     technique: 'stipplingOnPaper',
     dimensions: '14,8 × 21 cm',
     price: 50000,
-    status: 'available',
+    status: 'sold',
     isOriginal: true,
   },
 ];
